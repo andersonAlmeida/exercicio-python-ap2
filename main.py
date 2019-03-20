@@ -7,19 +7,20 @@ class Window:
         self.height = height
         self.title = title
 
-    def openWindow(self):
+    def createWindow(self):
         DISPLAYSURF  = pygame.display.set_mode((self.width, self.height))
-        pygame.display.set_caption( self.title )
+        pygame.display.set_caption( self.title )        
+
+    def start(self):
+        pygame.init()
+        self.createWindow()
+
         while True:
             for event in pygame.event.get():
                 if event.type == QUIT:
                     pygame.quit()
                     sys.exit()
             pygame.display.update()
-
-    def start(self):
-        pygame.init()
-        self.openWindow()
 
 
 
