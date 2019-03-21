@@ -1,3 +1,5 @@
+""" Classe Window  """
+
 import pygame, sys
 from pygame.locals import *
 
@@ -8,7 +10,7 @@ class Window:
         self.title = title
 
     def createWindow(self):
-        DISPLAYSURF  = pygame.display.set_mode((self.width, self.height))
+        pygame.display.set_mode((self.width, self.height))
         pygame.display.set_caption( self.title )        
 
     def start(self):
@@ -21,7 +23,6 @@ class Window:
                     pygame.quit()
                     sys.exit()
             pygame.display.update()
-
 
 
 screen = Window(800, 600, 'Oi, sou o PyGame.')
