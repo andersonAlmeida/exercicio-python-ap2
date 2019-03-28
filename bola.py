@@ -25,5 +25,8 @@ class Bola:
 
     def draw(self, screen):
         color = (255, 255, 255)
-        self.move(1, 1)
+        # self.move(1, 1)
         pygame.draw.circle( screen, color, self.position, self.radius )
+    
+    # def calcEdges(self, screen):
+    #     if screen.x >= 0:
