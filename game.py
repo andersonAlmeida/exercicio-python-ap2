@@ -1,20 +1,21 @@
 """ Classe Window  """
 
 import pygame, sys
-from ball import Ball
-from window import Window
+# from ball import Ball
+# from window import Window
+# from player import Player
 from pygame.locals import *
 
 class Game:
     def __init__(self):
-        self.screen = Window(800, 600, 'Oi, sou o PyGame.')
-        self.ball = Ball( 20 )
-        self.ball.position = (400, 300)
+        self.objects = []  
+        self.screen = 0      
 
-        self.run()
+    def createObjects(self, objects):
+        self.objects = objects
 
-    def draw(self):
-        self.screen.draw( self.ball )
+    def draw(self):        
+        self.screen.draw( self.objects )        
     
     def update(self):
         self.screen.update()
@@ -22,15 +23,12 @@ class Game:
 
     @property 
     def window(self):
-        pass
+        return self.screen
     
     @window.setter
     def size(self, size):
         pass
-
-    def add_object(self, obj):
-        pass
-
+    
     def run(self):
         pygame.init()
         self.screen.createWindow()
@@ -43,7 +41,7 @@ class Game:
                     pygame.quit()
                     sys.exit(0)                  
             
-            self.draw()
             self.update()            
+            self.draw()
 
 # game = Game()

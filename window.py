@@ -35,8 +35,10 @@ class Window:
     def update(self):
         pygame.display.update()
     
-    def draw(self, obj):
+    def draw(self, objs):
         self.screen.fill( (0,0,0) ) 
-        obj.draw( self.screen )
+
+        for obj in objs:
+            obj.draw( self.screen )
 
     

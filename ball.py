@@ -29,21 +29,28 @@ class Ball:
     def draw(self, screen):
         color = (255, 255, 255)
 
-        if self.collisionDetection(screen):
+        if self.collisionDetectionX(screen):
             self.direction_x *= -1
-            self.direction_y *= -1            
 
+        if self.collisionDetectionY(screen):
+            self.direction_y *= -1            
+        
         self.move(self.direction_x, self.direction_y)
         
         pygame.draw.circle( screen, color, self.position, self.radius )
     
-    def collisionDetection(self, screen):
+    def collisionDetectionY(self, screen):
+        hasCollision = False
+
+        if self.y + self.radius >= screen.get_height() or self.y - self.radius <= 0: # y collision
+            hasCollision = True
+
+        return hasCollision 
+
+    def collisionDetectionX(self, screen):
         hasCollision = False
 
         if self.x + self.radius >= screen.get_width() or self.x - self.radius <= 0: # x collision
             hasCollision = True
 
-        if self.y + self.radius >= screen.get_height() or self.y - self.radius <= 0: # y collision
-            hasCollision = True
-
-        return hasCollision   
+        return hasCollision       
