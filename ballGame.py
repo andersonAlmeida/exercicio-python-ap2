@@ -32,19 +32,44 @@ class BallGame( Game ):
                     pygame.quit()
                     sys.exit(0)                  
             
-            if self.collisionDetectionX(self.screen):
-                self.ball.direction_x *= 1
+            self.collisionDetection(self.screen)
+            # if self.collisionDetection(self.screen):
+                # self.ball.direction_x *= -1
 
             self.update()            
             self.draw()
 
-    def collisionDetectionX(self, screen):
-        hasCollision = False
+    def collisionDetection(self, screen):
+        # hasCollision = False
+        bx = self.ball.x #ball position x
+        by = self.ball.y #ball position Y
+        br = self.ball.radius # ball radius
+        # bDirectionX = self.ball.direction_x
+        # bDirectionY = self.ball.direction_y
 
-        if self.ball.x + self.ball.radius >= self.player2.x or self.ball.x - self.ball.radius <= self.player1.x: # x collision
-            hasCollision = True
+        p1x = self.player1.x #player 1 position x
+        p1y = self.player1.y #player 1 position y
+        p1width = self.player1.width #player 1 width
+        p1height = self.player1.height #player 1 height
 
-        return hasCollision   
+        p2x = self.player2.x #player 2 position x
+        p2y = self.player2.y #player 2 position y
+        # p2width = self.player2.width #player 2 width
+        p2height = self.player2.height #player 2 height
+
+        #bounds collision
+        if by - br <= 0 or by + br >= screen.height:
+            self.ball.direction_y *= -1
+
+        # ball collision against player 1
+        if bx - br <= p1x + p1width and by + br >= p1y and by - br <= p1y + p1height:
+            self.ball.direction_x *= -1
+
+        # ball collision against player 2
+        if bx + br >= p2x and by + br >= p2y and by - br <= p2y + p2height:
+            self.ball.direction_x *= -1
+
+        
 
             
 
