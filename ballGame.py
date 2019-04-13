@@ -1,11 +1,11 @@
 """ Classe BallGame herda de Game """
 
 from game import Game 
-import pygame, sys
+# import pygame, sys
 from ball import Ball
 from window import Window
 from player import Player
-from pygame.locals import *
+# from pygame.locals import *
 
 class BallGame( Game ):
     def __init__(self, width, height, title):
