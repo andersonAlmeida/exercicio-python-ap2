@@ -92,11 +92,13 @@ class BallGame( Game ):
         # player 2 point
         if bx < 0:
             self.ball.position = ( round(self.window.width / 2), round(self.window.height / 2) )
+            pygame.time.delay(500)
             self.ball.direction_x *= -1
         
         # player 1 point
         if bx > self.window.width:
             self.ball.position = ( round(self.window.width / 2), round(self.window.height / 2) )
+            pygame.time.delay(500)
             self.ball.direction_x *= -1
 
         

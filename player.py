@@ -8,6 +8,7 @@ class Player():
         self.y = pos_y
         self.width = width
         self.height = height
+        self.life = []
 
     @property
     def position(self):
@@ -19,6 +20,9 @@ class Player():
 
     def move(self, dy):        
         self.y += dy
+
+    def set_life(self, startPos):
+        pass
 
     def draw(self, screen):
         color = (255, 255, 255)
