@@ -6,13 +6,13 @@ import pygame
 from pygame.locals import *
 
 class Ball:
-    def __init__( self, radius ):
+    def __init__( self, radius, speed = 1 ):
         self.x = 0
         self.y = 0
         self.radius = radius
         self.width = radius * 2
-        self.direction_x = 1
-        self.direction_y = 1
+        self.direction_x = 1 * speed
+        self.direction_y = 1 * speed
 
     @property
     def position(self):
@@ -29,7 +29,8 @@ class Ball:
     def draw(self, screen):
         color = (255, 255, 255)          
         
-        self.move(self.direction_x, self.direction_y)
+        # self.move(self.direction_x, self.direction_y)
         
         pygame.draw.circle( screen, color, self.position, self.radius )    
+        
       

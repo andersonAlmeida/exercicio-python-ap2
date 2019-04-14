@@ -17,13 +17,10 @@ class Player():
     def position(self, position):
         self.x, self.y = position
 
-    def move(self, dx, dy):
-        self.x += dx
+    def move(self, dy):        
         self.y += dy
 
     def draw(self, screen):
-        color = (255, 255, 255)           
-        
-        # self.move(self.direction_x, self.direction_y)
+        color = (255, 255, 255)
         
         pygame.draw.rect( screen, color, pygame.Rect(self.x, self.y, self.width, self.height) )
