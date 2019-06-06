@@ -114,19 +114,16 @@ class ListaEncadeada:
                 self.head = None 
                 print("Lista destruida")
                 return True
-            self.head = iter.next #seta como início o próximo nó, caso remove o primeiro elemento
+                
+            self.head = iter.next #seta como início o próximo nó, caso N elementos remove o primeiro elemento
             return True
 
         prevNo = None #seta o ponteiro que salva o nó anterior
 
         while iter.next is not None: #itera pela lista, caso N elementos
 
-            if iter.value == v: #se é o valor que quero remover                
-
-                if prevNo is None: #verifica se é o head
-                    self.head = iter.next #seta o próximo nó como head
-                    return True
-                else: #se não é o head
+            if iter.value == v: #se é o valor que quero remover                 
+                if prevNo is not None: #verifica se é o head #se não é o head
                     prevNo.next = iter.next #aponta o nó anterior para o próximo nó
                     return True
             
@@ -156,7 +153,7 @@ lista.append(7)
 lista.printLista()
 
 
-lista.remove(5)
+lista.remove(7)
 
 
 lista.printLista()
