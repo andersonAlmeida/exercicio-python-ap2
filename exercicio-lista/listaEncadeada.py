@@ -56,30 +56,7 @@ class ListaEncadeada:
             iter = iter.next
 
         return iter
-    
-    # def append(self, v):
-    #     final = self.tail()
 
-    #     #cria nó de v
-    #     no = No(v)
-
-    #     if final is None:
-    #         final = no
-    #         self.head = final
-    #     else:
-    #         #final aponta p/ o novo nó
-    #         final.next = no
-
-    # def tail(self):
-    #     if self.head is None:
-    #         return None
-        
-    #     iter = self.head
-
-    #     while iter.next is not None:
-    #         iter = iter.next
-
-    #     return iter
 
     def printLista(self):
         if self.head is None:
@@ -114,7 +91,7 @@ class ListaEncadeada:
                 self.head = None 
                 print("Lista destruida")
                 return True
-                
+
             self.head = iter.next #seta como início o próximo nó, caso N elementos remove o primeiro elemento
             return True
 
@@ -130,6 +107,7 @@ class ListaEncadeada:
             prevNo = iter #atualiza a referência para o nó anterior
             iter = iter.next #atualiza o iterador
         
+        #verifica o último nó
         if iter.value == v:
             if iter.next is None: #se for o último nó
                 prevNo.next = None #remove o ponteiro do nó anterior
