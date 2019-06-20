@@ -7,11 +7,11 @@ class No:
         self.next = None
         self.before = None
     
-    def insertBefore(self, no, v):
-        pass
+    def insertBefore(self):
+        self.before = no
     
-    def insertAfter(self, no, v):
-        pass
+    def insertAfter(self):
+        self.next = no
 
 
 class ListaEncadeada:
