@@ -85,8 +85,8 @@ def verFila():
 
 class Pilha:
     def __init__(self, size):
-        self.stack = [None] * size
-        self.topo = 0
+        self.stack = [None] * size 
+        self.topo = -1
         
 
     def push(self, v):        
@@ -100,6 +100,7 @@ class Pilha:
     
     def pop(self):
         if self.topo < 0:
+            print('Pilha vazia')
             return False
 
         retorno = self.stack[self.topo - 1]
@@ -118,7 +119,7 @@ def verPilha():
     pilha.push(7)
     pilha.push(8)
 
-    dq = True #pilha.pop()
+    dq = pilha.pop()
 
     while dq is not False:
         if dq:
