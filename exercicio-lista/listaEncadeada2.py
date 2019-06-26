@@ -31,6 +31,11 @@ class ListaEncadeada:
         #cria nó de v
         no = No(v)
 
+        #se existe um head
+        if self.head is not None:
+            #aponta o head para o novo no que o antecede
+            self.head.before = no
+
         #v.next aponta p/ head
         no.next = self.head
 
@@ -195,7 +200,7 @@ def criarLista():
     lista.printLista()
 
 
-def manipulaLista():
+def fromHead():
     lista = ListaEncadeada()
 
     lista.prepend(2)
@@ -220,4 +225,31 @@ def manipulaLista():
     if iter.next is None:
         print(iter.value)
 
-manipulaLista()
+def fromTail():
+    lista = ListaEncadeada()
+
+    lista.prepend(2)
+    lista.append(3)
+    lista.append(4)
+    lista.append(5)
+    lista.append(6)
+    lista.prepend(1)
+    lista.append(7)
+
+    iter = lista.tail    
+
+    while iter.before is not None:
+
+        if iter.value == 5:
+            iter.insertBefore(88)
+        
+        print(iter.value)
+
+        iter = iter.before
+    
+    # if iter.before is None:
+    print(iter.value)
+
+# criarLista()
+# fromHead()
+fromTail()
