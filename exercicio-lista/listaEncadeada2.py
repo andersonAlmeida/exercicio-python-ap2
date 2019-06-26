@@ -7,10 +7,18 @@ class No:
         self.next = None
         self.before = None
     
-    def insertBefore(self):
+    def insertBefore(self, v):
+        no = No(v)
+        no.before = self.before
+        self.before.next = no
+        no.next = self        
         self.before = no
     
-    def insertAfter(self):
+    def insertAfter(self, v):
+        no = No(v)
+        no.next = self.next
+        self.next.before = no
+        no.before = self
         self.next = no
 
 
@@ -97,7 +105,7 @@ class ListaEncadeada:
             iter = iter.next #atualiza o iterador
 
 
-    def tail(self):
+    def getTail(self):
         if self.head is None:
             return None
         
@@ -168,21 +176,48 @@ class ListaEncadeada:
         print('Valor não encontrado na lista.')
 
 
+def criarLista():
+    lista = ListaEncadeada()
 
-lista = ListaEncadeada()
+    lista.prepend(2)
+    lista.append(3)
+    lista.append(4)
+    lista.append(5)
+    lista.append(6)
+    lista.prepend(1)
+    lista.append(7)
 
-lista.prepend(2)
-lista.append(3)
-lista.append(4)
-lista.append(5)
-lista.append(6)
-lista.prepend(1)
-lista.append(7)
+    lista.printLista()
 
-lista.printLista()
+    lista.insertBefore(6, 150)
+    # lista.remove(7)
 
-lista.insertBefore(6, 150)
-# lista.remove(7)
+    lista.printLista()
 
 
-lista.printLista()
+def manipulaLista():
+    lista = ListaEncadeada()
+
+    lista.prepend(2)
+    lista.append(3)
+    lista.append(4)
+    lista.append(5)
+    lista.append(6)
+    lista.prepend(1)
+    lista.append(7)
+
+    iter = lista.head    
+
+    while iter.next is not None:
+
+        if iter.value == 5:
+            iter.insertAfter(88)
+        
+        print(iter.value)
+
+        iter = iter.next
+    
+    if iter.next is None:
+        print(iter.value)
+
+manipulaLista()
