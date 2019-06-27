@@ -69,7 +69,7 @@ def verFila():
     fila.enqueue(5)
     fila.enqueue(6)
     fila.enqueue(7)
-    fila.enqueue(8)
+    # fila.enqueue(8)
 
     dq = fila.dequeue()
 
@@ -106,6 +106,9 @@ class Pilha:
         retorno = self.stack[self.topo - 1]
         self.topo -= 1
         return retorno
+    
+    def peek(self):
+        return self.stack[ self.topo - 1 ]
 
 def verPilha():
     pilha = Pilha(8)
@@ -118,14 +121,16 @@ def verPilha():
     pilha.push(6)
     pilha.push(7)
     pilha.push(8)
+    
 
-    dq = pilha.pop()
+    print( pilha.peek() )
+    # dq = pilha.pop()
 
-    while dq is not False:
-        if dq:
-            print( dq )
+    # while dq is not False:
+    #     if dq:
+    #         print( dq )
             
-        dq = pilha.pop()
+    #     dq = pilha.pop()
 
 # verFila()
 verPilha()
