@@ -19,3 +19,13 @@ Scenario: Entender o número com mais de um simbolo VII
     Given o número romano "VII"
     When quero converter em um número arábico
     Then o resultado é 7
+
+Scenario: Entender o número com inversão IV
+    Given o número romano "IV"
+    When quero converter em um número arábico
+    Then o resultado é 4
+
+Scenario: Entender o número com inversão MCMLXXXIX
+    Given o número romano "MCMLXXXIX"
+    When quero converter em um número arábico
+    Then o resultado é 1989
