@@ -15,7 +15,7 @@ def converter(value):
     anterior = 0
     # MCMLXXXIX
 
-    for c in value[::-1]:
+    for c in value[::-1]: # inverte a lista para ler do final
         v = tabela[c]
         m = -1 if v < anterior else +1
         resultado += v * m
