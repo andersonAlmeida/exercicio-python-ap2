@@ -1,0 +1,180 @@
+class No:
+    def __init__(self, v):
+        self.value = v
+        self.next = None
+        self.before = None
+    
+    def insertBefore(self, v):
+        no = No(v)
+        no.before = self.before
+        self.before.next = no
+        no.next = self        
+        self.before = no
+    
+    def insertAfter(self, v):
+        no = No(v)
+        no.next = self.next
+        self.next.before = no
+        no.before = self
+        self.next = no
+
+
+class ListaEncadeada:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+    
+    def prepend(self, v):
+        #cria nó de v
+        no = No(v)
+
+        #se existe um head
+        if self.head is not None:
+            #aponta o head para o novo no que o antecede
+            self.head.before = no
+
+        #v.next aponta p/ head
+        no.next = self.head
+
+        #head aponta p/ o novo nó
+        self.head = no
+
+        #procura o último elemento para setar o tail
+        iter = self.head
+        while iter.next is not None:
+            iter = iter.next
+        self.tail = iter
+        
+
+    def append(self, v):
+        final = self.tail
+
+        #cria nó de v
+        no = No(v)
+        
+        #final aponta p/ o novo nó
+        if final is None:
+            final = no
+            self.head = final
+        else:
+            final.next = no
+            #aponta para o no anterior
+            no.before = final 
+
+        #o tail é o novo nó
+        self.tail = no
+
+    
+    def insertBefore(self, no, v):
+        # iterador para percorrer a lista
+        iter = self.head
+
+        while iter.next is not None: #itera pela lista
+
+            if iter.value == no: #se é o valor que quero                  
+                #cria nó de v
+                no = No(v)
+                #no anterior ao atual aponta para o novo no
+                iter.before.next = no
+                # novo no aponta para o no atual
+                no.next = iter
+                # aponta para o no anterior  ao no atual
+                no.before = iter.before
+                # no atual salva como anterior o novo no criado
+                iter.before = no
+            
+            iter = iter.next #atualiza o iterador
+        
+    
+    def insertAfter(self, no, v):
+        # iterador para percorrer a lista
+        iter = self.head
+
+        while iter.next is not None: #itera pela lista
+
+            if iter.value == no: #se é o valor que quero                  
+                #cria nó de v
+                no = No(v)
+                #no anterior ao atual aponta para o novo no
+                iter.before.next = no
+                # novo no aponta para o no atual
+                no.next = iter
+                # aponta para o no anterior  ao no atual
+                no.before = iter.before
+                # no atual salva como anterior o novo no criado
+                iter.before = no
+            
+            iter = iter.next #atualiza o iterador
+
+
+    def getTail(self):
+        if self.head is None:
+            return None
+        
+        iter = self.head
+
+        while iter.next is not None:
+            iter = iter.next
+
+        return iter
+
+
+    def printLista(self):
+        if self.head is None:
+            print("Lista vazia")
+            return False
+        
+        iter = self.head
+        prev = None        
+
+        while iter.next is not None:
+            if prev is None:
+                print('head: ' + str(iter.value))
+            else:
+                print(iter.value)
+
+            iter = iter.next
+            prev = iter
+        
+        if iter.next is None:
+            print('tail: ' + str(iter.value))
+
+
+    def remove(self, v):
+        if self.head is None: #se não existe o head a lista não existe, caso 0 elementos
+            print("Lista inexistente")
+            return None
+        
+        iter = self.head #seta o head como início
+
+        if iter.value == v: #se o primeiro nó é o valor desejado
+            if iter.next is None: # se não tem um próximo valor, caso 1 elemento
+                self.head = None 
+                print("Lista destruida")
+                return True
+
+            self.head = iter.next #seta como início o próximo nó, caso N elementos remove o primeiro elemento
+            return True
+
+        prevNo = None #seta o ponteiro que salva o nó anterior
+
+        while iter.next is not None: #itera pela lista, caso N elementos
+
+            if iter.value == v: #se é o valor que quero remover                 
+                if prevNo is not None: #verifica se é o head #se não é o head
+                    prevNo.next = iter.next #aponta o nó anterior para o próximo nó
+                    return True
+            
+            prevNo = iter #atualiza a referência para o nó anterior
+            iter = iter.next #atualiza o iterador
+        
+        #verifica o último nó
+        if iter.value == v:
+            if iter.next is None: #se for o último nó
+                prevNo.next = None #remove o ponteiro do nó anterior
+                self.tail = prevNo # seta o nó anterior como tail
+                return True
+        
+        print('Valor não encontrado na lista.')
+
+
